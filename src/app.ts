@@ -16,22 +16,22 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.get("/", async (req, res) => {
-	res.send("Hello world!")
+    res.send("Hello world!")
 })
 
 // error handlers
 app.use(async (req, res, next) => {
-	next(new createError.NotFound())
+    next(new createError.NotFound())
 })
 
 const errorHandler: ErrorRequestHandler = (err, req, res) => {
-	res.status(err.status || 500)
-	res.send({
-		error: {
-			status: err.status || 500,
-			message: err.message,
-		},
-	})
+    res.status(err.status || 500)
+    res.send({
+        error: {
+            status: err.status || 500,
+            message: err.message,
+        },
+    })
 }
 
 app.use(errorHandler)
