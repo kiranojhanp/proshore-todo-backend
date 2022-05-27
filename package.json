@@ -4,10 +4,10 @@
 	"description": "",
 	"main": "dist/index.js",
 	"scripts": {
-		"format:check": "npx prettier --check .",
-		"format:write": "npx prettier --write .",
-		"lint:check": "npx eslint .",
-		"lint:fix": "npx eslint --fix .",
+		"format:check": "prettier --check .",
+		"format:write": "prettier --write .",
+		"lint:check": "eslint .",
+		"lint:fix": "eslint --fix .",
 		"prestart": "npx tsc",
 		"start": "node dist/index.js",
 		"dev": "nodemon"
