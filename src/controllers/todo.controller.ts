@@ -10,13 +10,6 @@ const getTodos = async (req: Request, res: Response, next: NextFunction) => {
         if (!todos) throw new createHttpError.NotFound()
         res.send(todos)
     } catch (error) {
-        // 422 Unprocessable Entity
-        // server understands the content type but but was unable to process the data
-        if (error.isJoi === true) {
-            error.status = 422
-            error.message = error.details.message
-        }
-
         next(error)
     }
 }
