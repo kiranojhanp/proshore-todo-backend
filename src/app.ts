@@ -5,6 +5,7 @@ import createError from "http-errors"
 import morgan from "morgan"
 import responseTime from "response-time"
 import TodoRoutes from "./routes/todo.routes"
+import("./helpers/init_db")
 
 const app: Application = express()
 
@@ -29,7 +30,7 @@ app.use(async (req, res, next) => {
 
 const errorHandler: ErrorRequestHandler = (err, req, res) => {
     res.status(err.status || 500)
-    res.send({
+    res.json({
         error: {
             status: err.status || 500,
             message: err.message,
