@@ -4,6 +4,7 @@ import helmet from "helmet"
 import createError from "http-errors"
 import morgan from "morgan"
 import responseTime from "response-time"
+import TodoRoutes from "./routes/todo.routes"
 
 const app: Application = express()
 
@@ -18,6 +19,8 @@ app.use(express.urlencoded({ extended: true }))
 app.get("/", async (req, res) => {
     res.send("Hello world!")
 })
+
+app.use("/todo", TodoRoutes)
 
 // error handlers
 app.use(async (req, res, next) => {
