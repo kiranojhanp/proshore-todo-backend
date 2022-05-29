@@ -20,8 +20,8 @@ app.use(responseTime())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.use("/todo", verifyAccessToken, TodoRoutes)
-app.use("/auth", AuthRoutes)
+app.use("/api/todo", verifyAccessToken, TodoRoutes)
+app.use("/api/auth", AuthRoutes)
 
 // error handlers
 app.use(error404Handler)

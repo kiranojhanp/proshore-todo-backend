@@ -76,11 +76,15 @@ const deleteTodo = async (req: Request, res: Response, next: NextFunction) => {
 // Get todo item only if it exists
 const getIfDataExists = async (id: string) => {
     return new Promise<TodoType | any>((resolve, reject) => {
-        const todo = Todo.findById(id)
-        if (!todo) {
-            reject(new createHttpError.NotFound(`Todo item of id:"${id}" doesn't exist`))
-        }
-        resolve(todo)
+        Todo.findById(id)
+            .then((todo) => {
+                console.log(todo)
+                if (!todo) {
+                    reject(new createHttpError.NotFound(`Todo item of id:"${id}" doesn't exist`))
+                }
+                resolve(todo)
+            })
+            .catch((err) => console.log(err))
     })
 }
 
