@@ -35,7 +35,7 @@ const verifyAccessToken = (req: Request, res: Response, next: NextFunction) => {
             const message = err.name === "JsonWebTokenError" ? "Unauthorized" : err.message
             return next(new createError.Unauthorized(message))
         }
-        req.payload = payload
+        req.user = payload
         next()
     })
 }
