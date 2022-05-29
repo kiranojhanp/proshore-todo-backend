@@ -4,6 +4,7 @@ import helmet from "helmet"
 import morgan from "morgan"
 import responseTime from "response-time"
 import { error404Handler, errorHandler } from "./middlewares/error.middleware"
+import AuthRoutes from "./routes/auth.routes"
 import TodoRoutes from "./routes/todo.routes"
 import("./helpers/init_db")
 
@@ -18,6 +19,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use("/todo", TodoRoutes)
+app.use("/auth", AuthRoutes)
 
 // error handlers
 app.use(error404Handler)

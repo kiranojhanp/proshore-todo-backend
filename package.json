@@ -23,6 +23,7 @@
         "helmet": "^5.1.0",
         "http-errors": "^2.0.0",
         "joi": "^17.6.0",
+        "jsonwebtoken": "^8.5.1",
         "mongoose": "^6.3.4",
         "response-time": "^2.3.2"
     },
@@ -32,6 +33,7 @@
         "@types/cors": "^2.8.12",
         "@types/express": "^4.17.13",
         "@types/http-errors": "^1.8.2",
+        "@types/jsonwebtoken": "^8.5.8",
         "@types/morgan": "^1.9.3",
         "@types/node": "^17.0.35",
         "@types/response-time": "^2.3.5",
