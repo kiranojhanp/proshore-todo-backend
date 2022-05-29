@@ -1,7 +1,6 @@
-import { config } from "dotenv"
 import http from "http"
 import app from "./app"
-config()
+import "./helpers/init_env"
 
 const server = http.createServer(app)
 
