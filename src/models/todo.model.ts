@@ -10,6 +10,8 @@ const todoTaskSchema = new Schema<ITodo>({
         type: String,
         required: true,
     },
+    // status: true => Done
+    // status: false => Upcoming
     status: {
         type: Boolean,
         required: true,
