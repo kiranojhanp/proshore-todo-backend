@@ -85,7 +85,7 @@ const getIfDataExists = async (id: string) => {
 }
 
 // Check authorization
-const checkOwner = async (todo: any, aud: string) => {
+const checkOwner = async (todo: TodoType | any, aud: string) => {
     return new Promise((resolve, reject) => {
         const { user } = todo
         if (user.toString() !== aud) {
