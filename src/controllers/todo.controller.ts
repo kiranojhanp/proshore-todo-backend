@@ -78,7 +78,6 @@ const getIfDataExists = async (id: string) => {
     return new Promise<TodoType | any>((resolve, reject) => {
         Todo.findById(id)
             .then((todo) => {
-                console.log(todo)
                 if (!todo) {
                     reject(new createHttpError.NotFound(`Todo item of id:"${id}" doesn't exist`))
                 }

@@ -15,11 +15,7 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 
         const user = new User(result)
         const savedUser = await user.save()
-        console.log(savedUser)
-
         const accessToken = await signAccessToken(savedUser.id)
-
-        console.log(accessToken)
 
         res.send({ accessToken })
     } catch (error) {
