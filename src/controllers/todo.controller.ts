@@ -59,7 +59,7 @@ const deleteTodo = async (req: Request, res: Response, next: NextFunction) => {
         const todo = await Todo.findById(id)
         if (!todo) throw new createHttpError.NotFound()
         await todo.remove()
-        res.status(204).json({ message: "Recipe deleted" })
+        res.status(200).json({ message: "Recipe deleted" })
     } catch (error) {
         next(error)
     }
