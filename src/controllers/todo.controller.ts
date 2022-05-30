@@ -19,8 +19,6 @@ const getTodos = async (req: Request, res: Response, next: NextFunction) => {
 const deleteTodos = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const user = req.user.aud
-        const todos = await Todo.find({ user })
-        await checkOwner(todos[0], user)
         await Todo.deleteMany({ user })
         res.status(200).json({ message: "Todos deleted" })
     } catch (error) {
