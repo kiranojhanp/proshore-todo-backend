@@ -15,6 +15,19 @@ const getTodos = async (req: Request, res: Response, next: NextFunction) => {
     }
 }
 
+// @desc Delete All todos , @route DELETE /todo, @access Private
+const deleteTodos = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const user = req.user.aud
+        const todos = await Todo.find({ user })
+        await checkOwner(todos[0], user)
+        await Todo.deleteMany({ user })
+        res.status(200).json({ message: "Todos deleted" })
+    } catch (error) {
+        next(error)
+    }
+}
+
 // @desc Add new todo , @route POST /todo, @access Private
 const addTodo = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -66,7 +79,7 @@ const deleteTodo = async (req: Request, res: Response, next: NextFunction) => {
         const todo = await getIfDataExists(id)
         await checkOwner(todo, aud)
         await todo.remove()
-        res.status(200).json({ message: "Recipe deleted" })
+        res.status(200).json({ message: "Todos deleted" })
     } catch (error) {
         next(error)
     }
@@ -98,4 +111,4 @@ const checkOwner = async (todo: TodoType | any, aud: string) => {
     })
 }
 
-export { getTodos, addTodo, getTodo, updateTodo, deleteTodo }
+export { getTodos, deleteTodos, addTodo, getTodo, updateTodo, deleteTodo }
