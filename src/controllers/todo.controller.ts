@@ -19,7 +19,9 @@ const getTodos = async (req: Request, res: Response, next: NextFunction) => {
 const deleteTodos = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const user = req.user.aud
-        await Todo.deleteMany({ user })
+        const response = await Todo.deleteMany({ user })
+        console.log(response)
+        if (response.deletedCount === 0) throw new createHttpError.NotFound("No todos present in the database")
         res.status(200).json({ message: "Todos deleted" })
     } catch (error) {
         next(error)
