@@ -3,7 +3,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # install packages
-COPY package*.json ./
+COPY package.json ./
 RUN npm install
 
 # copy everything
