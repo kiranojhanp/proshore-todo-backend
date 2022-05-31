@@ -6,8 +6,18 @@ import { todoSchema } from "../validations/todo.schema"
 // @desc Get All todos , @route GET /todo, @access Private
 const getTodos = async (req: Request, res: Response, next: NextFunction) => {
     try {
+        const status = req.query.status || ""
         const user = req.user.aud
-        const todos = await Todo.find({ user })
+        let todos
+
+        if (status === "done") {
+            todos = await Todo.find({ user, status: true })
+        } else if (status === "upcoming") {
+            todos = await Todo.find({ user, status: false })
+        } else {
+            todos = await Todo.find({ user })
+        }
+
         if (!todos) throw new createHttpError.NotFound()
         res.status(200).send(todos)
     } catch (error) {

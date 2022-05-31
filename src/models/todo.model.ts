@@ -20,6 +20,7 @@ const todoTaskSchema = new Schema<ITodo>({
     status: {
         type: Boolean,
         required: true,
+        default: false,
     },
     date: {
         type: Date,
