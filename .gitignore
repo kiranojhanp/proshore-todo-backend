@@ -1,4 +1,4 @@
-.env
+# .env
 dist/
 # TS -incremental file
 tsconfig.tsbuildinfo
