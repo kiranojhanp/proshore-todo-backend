@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 # install packages
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 
 # copy everything
 COPY . .
