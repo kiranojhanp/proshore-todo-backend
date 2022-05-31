@@ -1,10 +1,14 @@
 FROM node:16-alpine
-
 RUN mkdir -p /usr/src/app
-
 WORKDIR /usr/src/app
 
-EXPOSE 8000
+# install packages
+COPY package*.json ./
+RUN npm ci
 
-# You can change this
+# copy everything
+COPY . .
+
+# start the server
+EXPOSE 8000
 CMD [ "npm", "start" ]
