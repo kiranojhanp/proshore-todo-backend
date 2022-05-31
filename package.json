@@ -9,7 +9,7 @@
         "lint:check": "eslint .",
         "lint:fix": "eslint --fix .",
         "prestart": "npx tsc",
-        "start": "node dist/index.js  --ignore client",
+        "start": "node dist/index.js",
         "dev": "nodemon"
     },
     "keywords": [],
